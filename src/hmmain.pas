@@ -1,13 +1,18 @@
 unit Hmmain;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  SysUtils, WinTypes, WinProcs, Messages, Classes, Graphics, Controls,
+  SysUtils, Messages, Classes, Graphics, Controls,
   Forms, Dialogs, StdCtrls, Menus,
-  HotPot,DirDlg, Spin, TabNotBk, ExtCtrls, ComCtrls, ABox;
+  HotPot,Spin, ExtCtrls, ComCtrls,DskUtil;
 
 type
+
+  { THMMForm }
+
   THMMForm = class(TForm)
     MainMenu1: TMainMenu;
     mFile: TMenuItem;
@@ -21,6 +26,7 @@ type
     mCopy: TMenuItem;
     mPaste: TMenuItem;
     GamePage: TPageControl;
+    OpenDlg: TOpenDialog;
     PlayersPage: TTabSheet;
     HeroesPage: TTabSheet;
     PlayerData: TGroupBox;
@@ -82,8 +88,8 @@ type
     SpellListBox: TListBox;
     ArtfListBox: TListBox;
     HeroNameCombo: TComboBox;
-    AboutDlg: TAboutBox;
 
+    procedure FormChangeBounds(Sender: TObject);
     procedure mOpenClick(Sender: TObject);
     procedure mExitClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -125,7 +131,6 @@ type
     procedure GamePageChange(Sender: TObject);
     procedure HeroNameComboChange(Sender: TObject);
     procedure mAboutClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
     procedure ClearHeroData;
@@ -154,18 +159,16 @@ var
 
 implementation
 
-{$R *.DFM}
-{$R HMMStr32.res}
+{$R *.lfm}
+{$R hmmstr.res}  // windres --target=pe-i386 hmmstr.rc hmmstr.res
 
-uses Lic;
+{uses Lic;}
 
 const
  STR_UNITS = 200;
  STR_ARTIF = 300;
  STR_SPELL = 400;
 
-var
- secret: MSecret;
 
 procedure THMMForm.FormCreate(Sender: TObject);
 var
@@ -208,12 +211,17 @@ procedure THMMForm.FormDestroy(Sender: TObject);
 begin
 if hCopyRec <> nil then Dispose(hCopyRec);
 Players.Free;
-_lclose(fhandle);
+FileClose(fhandle);
 end;
 
 procedure THMMForm.mOpenClick(Sender: TObject);
 begin
  OpenGame;
+end;
+
+procedure THMMForm.FormChangeBounds(Sender: TObject);
+begin
+
 end;
 
 procedure THMMForm.OpenGame;
@@ -224,17 +232,11 @@ var
   i: Integer;
 begin
 if bPSave then SaveCurrentPLayers;
-if fhandle > 0 then _lclose(fhandle);
-CDirDlg := TCDirDlg.Create(self);
-CDirDlg.ShowModal;
-CDirDlg.Free;
-if CDirDlg.ModalResult = mrOk then
+if fhandle > 0 then FileClose(fhandle);
+if OpenDlg.Execute then
  begin
-  if FileExists(ExpandFileName(SavFil)) then
-   begin
-    sb.str := ExpandFileName(SavFil) + #0;
-    fhandle := _lopen(sb.cArray,OF_READWRITE + OF_SHARE_EXCLUSIVE);
-   end;
+  sb.str := OpenDlg.FileName + #0;
+  fhandle := FileOpen(sb.cArray,fmOpenReadWrite or fmShareExclusive);
  if(fhandle >0) and (GamePage.ActivePage.TabIndex = 0) then
   begin
    PLayers := TList.Create;
@@ -242,8 +244,8 @@ if CDirDlg.ModalResult = mrOk then
    for i:=0 to 3 do
     begin
      pos := FindStr(fhandle,cPNames[i]);
-     _llseek(fhandle,pos,0);
-     _lread(fhandle,@rec,SizeOf(TPlayerRec));
+     FileSeek(fhandle,pos,0);
+     FileRead(fhandle,rec,SizeOf(TPlayerRec));
      New(pRec);
      StrMove(PChar(pRec),rec,SizeOf(TPlayerRec));
      Players.Add(pRec);
@@ -357,8 +359,8 @@ if(fhandle >0) and (NewTab = 0) then
    for i:=0 to 3 do
     begin
      pos := FindStr(fhandle,cPNames[i]);
-     _llseek(fhandle,pos,0);
-     _lread(fhandle,@rec,SizeOf(TPlayerRec));
+     FileSeek(fhandle,pos,0);
+     FileRead(fhandle,rec,SizeOf(TPlayerRec));
      New(pRec);
      StrMove(PChar(pRec),rec,SizeOf(TPlayerRec));
      Players.Add(pRec);
@@ -477,9 +479,9 @@ if hRec <> nil then
     New(hTmp);
     hTmp^ := hRec^;
     pos := FindStr(fhandle,hTmp^.Name);
-    {pos := }_llseek(fhandle,pos,0);
+    {pos := }FileSeek(fhandle,pos,0);
     StrMove(rec,PChar(hTmp),SizeOf(THeroRec));
-    {pos := }_lwrite(fhandle,rec,SizeOf(THeroRec));
+    {pos := }FileWrite(fhandle,rec,SizeOf(THeroRec));
     Dispose(hTmp);
     bHSave := false;
    end;
@@ -504,9 +506,9 @@ if pRec <> nil then
      begin
       pTmp := Players.Items[i];
       pos := FindStr(fhandle,pTmp^.Name);
-      {pos := }_llseek(fhandle,pos,0);
+      {pos := }FileSeek(fhandle,pos,0);
       StrMove(rec,PChar(pTmp),SizeOf(TPlayerRec));
-      {pos := }_lwrite(fhandle,rec,SizeOf(TPlayerRec));
+      {pos := }FileWrite(fhandle,rec,SizeOf(TPlayerRec));
      end;
     Dispose(pTmp);
     bPSave := false;
@@ -786,8 +788,8 @@ with Sender as TPageControl do
      for i:=0 to 3 do
       begin
        pos := FindStr(fhandle,cPNames[i]);
-       _llseek(fhandle,pos,0);
-       _lread(fhandle,@rec,SizeOf(TPlayerRec));
+       FileSeek(fhandle,pos,0);
+       FileRead(fhandle,rec,SizeOf(TPlayerRec));
        New(pRec);
        StrMove(PChar(pRec),rec,SizeOf(TPlayerRec));
        Players.Add(pRec);
@@ -810,18 +812,10 @@ begin
 if (bHSave) then SaveCurrentHero;
 if fhandle <0 then
  begin
-  CDirDlg := TCDirDlg.Create(self);
-  CDirDlg.ShowModal;
-  CDirDlg.Free;
-  if CDirDlg.ModalResult = mrOk then
-   begin
-    if FileExists(ExpandFileName(SavFil)) then
-     begin
-      sb.str := ExpandFileName(SavFil) + #0;
-      fhandle := _lopen(sb.cArray,OF_READWRITE + OF_SHARE_EXCLUSIVE);
-     end;
-   end;
-end;
+  if OpenDlg.Execute then
+ begin
+  sb.str := OpenDlg.FileName + #0;
+  fhandle := FileOpen(sb.cArray, fmOpenReadWrite or fmShareExclusive);
 if(fhandle > 0) then
  begin
   ClearHeroData;
@@ -829,8 +823,8 @@ if(fhandle > 0) then
   pos := FindStr(fhandle,HeroName);
   if pos > 0 then
   begin
-   _llseek(fhandle,pos,0);
-   _lread(fhandle,@rec,SizeOf(THeroRec));
+   FileSeek(fhandle,pos,0);
+   FileRead(fhandle,rec,SizeOf(THeroRec));
    New(hRec);
    StrMove(PChar(hRec),rec,SizeOf(THeroRec));
    FillHeroRecord;
@@ -838,21 +832,12 @@ if(fhandle > 0) then
   end
  end;
 end;
+  end;
+end;
 
 procedure THMMForm.mAboutClick(Sender: TObject);
 begin
- AboutDlg.Execute(secret);
+ //AboutDlg.Execute(secret);
 end;
 
-procedure THMMForm.FormActivate(Sender: TObject);
-begin
- if (GetStartDate=0) then SetStartDate(Date);
- if (not IsRegistered(secret)) and (IsExpired) then
-  MessageDlg('Your' +IntToStr(Period) + ' days evaluation period has expired!', mtInformation, [mbOk], 0);
-end;
-
-initialization
-  secret := secret + 'H' + 'M' + 'M';   // Product - HMM
-  secret := secret + '7' + 'C' + 'D';   // Year - 1997
-  secret := secret + '3' + 'F' + 'C';   // Month and Day - 1020
 end.

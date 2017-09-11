@@ -1,18 +1,19 @@
 program Hmmed;
 
+{$MODE Delphi}
+
 uses
-  Forms,
+  Forms, Interfaces,
   Hmmain in 'src/hmmain.pas' {MainForm},
-  Dirdlg in 'src/dirdlg.pas' {CDirDlg},
   Hotpot in 'src/hotpot.pas',
+  DskUtil in 'src/dskutil.pas',
   About in 'src/about.pas' {AboutBox};
 
-{$R *.RES}
+{$R *.res}
 
 begin
   Application.Title := 'Heroes of M&M Save Editor';
-  Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TCDirDlg, CDirDlg);
+  Application.CreateForm(THMMForm, HMMForm);
   Application.CreateForm(TAboutBox, AboutBox);
   Application.Run;
 end.
