@@ -1,0 +1,45 @@
+                      Heroes of Might&Magic, Editor for Win95 v1.0
+                      Programmed by: Mariusz S. Jurgielewicz
+		           (mordor@opnt.optimus.wroc.pl)
+
+DISCLAIMER:  THIS EDITOR OR ITS AUTHOR IS IN NO WAY CONNECTED IN ANY WAY
+             WITH NEW WORLD COMPUTING OR ANY OF ITS AFFILIATES OR PARENT 
+	     COMPANIES. USE THIS PROGRAM AT YOUR OWN RISK, IT IS NOT WARRENTED 
+	     OR GUARANTEED TO BE BUG FREE, IT IS, HOWEVER, FREEWARE.  WHEN 
+             COMPILED IT WAS VIRUS FREE, HOWEVER, ALWAYS CHECK THIS PROGRAM
+             BEFORE FIRST USING IT SINCE ANY NUMBER OF THINGS CAN HAPPEN
+             WHILE IT'S FLOATING AROUND THE NET.
+
+This  program is FREEWARE. You may freely copy, distribute, etc. this program. 
+You may NOT decompile, reverse engineer,etc. the code of this program. 
+Send your suggestions to me and I'll try to incorporate them into the next version.
+The source code is not likely to be released, but if I get something in exchange
+maybe you may persuade me. 
+
+
+It's quite simple saved game editor. Data from saved game file is spread to
+pages. First page contains info about all players, the second page is used
+for searcging and editing hero data.
+
+Players Page.
+On first page you can find infomation about players. In most cases Player 1
+is the one you play, but we can also reset computer's gold. For each player
+following features can be edited: Crystals, Gems, Lumber, Mercury, Ore,
+Sulfer and Gold. These resources are sued for buying spells, artifacts and
+hiring heroes. Maximum values for resources are 2,147,483,647 what should be 
+enough for most lazy players :-) I must admit that it's impossible to finish
+some scenarios without cheats so I use this program in "real" life.
+
+Heroes Page.
+My guess is that number of heroes is constant but I didn't put all name
+to one listbox. You must enter hero name in edit box and press Search button.
+Be aware, some heroes have two names, short and long, you try both if program
+cannot find a hero. For example if we want hero named "Kastore" we can enter
+his full name or just a part ("Kas"). After pressing Search button data of
+hero with most matching name will be displayed on this page. Next search or
+page changing will store changes.
+
+If you have any problems, suggestions please send me your comments.
+
+enjoy,
+

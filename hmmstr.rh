@@ -1,0 +1,3 @@
+#define STR_UNITS	200
+#define STR_ARTIF	300
+#define STR_SPELL	400
