@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="10">
+      <Unit0>
+        <Filename Value="hmmed.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Hmmed"/>
+        <CursorPos Y="17"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="src/hmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="HMMForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Hmmain"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="120"/>
+        <CursorPos X="2" Y="134"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="src/dirdlg.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="Dirdlg"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="11" Y="12"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="src/hotpot.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="HotPot"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="21"/>
+        <CursorPos X="7" Y="51"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="src/about.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutBox"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="About"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="42" Y="5"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="/opt/local/share/fpcsrc/rtl/objpas/sysutils/sysstrh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="10" Y="126"/>
+        <UsageCount Value="10"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="/Developer/lazarus/lcl/lresources.pp"/>
+        <UnitName Value="LResources"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3122"/>
+        <CursorPos Y="3135"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="/Developer/lazarus/lcl/lclproc.pas"/>
+        <UnitName Value="LCLProc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="887"/>
+        <CursorPos Y="902"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="/Developer/lazarus/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="139"/>
+        <CursorPos Y="159"/>
+        <UsageCount Value="10"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/Developer/lazarus/lcl/interfaces/carbon/carbonobject.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="613"/>
+        <CursorPos Y="627"/>
+        <UsageCount Value="10"/>
+      </Unit9>
+    </Units>
+    <JumpHistory Count="24" HistoryIndex="23">
+      <Position1>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position1>
+      <Position2>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position2>
+      <Position3>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position3>
+      <Position4>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position4>
+      <Position5>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position5>
+      <Position6>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position6>
+      <Position7>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position7>
+      <Position8>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position8>
+      <Position9>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position9>
+      <Position10>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position10>
+      <Position11>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position11>
+      <Position12>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position12>
+      <Position13>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position13>
+      <Position14>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position14>
+      <Position15>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="209" TopLine="185"/>
+      </Position15>
+      <Position16>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="208" TopLine="185"/>
+      </Position16>
+      <Position17>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="210" TopLine="186"/>
+      </Position17>
+      <Position18>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="211" TopLine="187"/>
+      </Position18>
+      <Position19>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="844" TopLine="815"/>
+      </Position19>
+      <Position20>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="846" Column="2" TopLine="821"/>
+      </Position20>
+      <Position21>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="824" Column="22" TopLine="814"/>
+      </Position21>
+      <Position22>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="178" TopLine="189"/>
+      </Position22>
+      <Position23>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="227" Column="13" TopLine="211"/>
+      </Position23>
+      <Position24>
+        <Filename Value="src/hmmain.pas"/>
+        <Caret Line="134" Column="2" TopLine="120"/>
+      </Position24>
+    </JumpHistory>
+  </ProjectSession>
+  <SkipCheckLCLInterfaces Value="True"/>
+</CONFIG>
